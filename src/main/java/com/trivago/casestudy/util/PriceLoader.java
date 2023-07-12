@@ -5,6 +5,7 @@ import com.fasterxml.jackson.dataformat.yaml.YAMLFactory;
 import com.trivago.casestudy.dto.Accommodation;
 import com.trivago.casestudy.dto.Advertiser;
 import com.trivago.casestudy.dto.Price;
+import com.trivago.casestudy.exception.BusinessException;
 import org.springframework.stereotype.Component;
 
 import java.io.File;
@@ -16,19 +17,18 @@ import java.util.Map;
 @Component
 public class PriceLoader {
 
-    private String path = "src/main/resources/static/prices/";
-    private String partnar1 = "advertiser_100.yaml";
-    private String partnar2 = "advertiser_200.json";
+     String path = "src/main/resources/static/prices/";
+     String partnar1 = "advertiser_100.yaml";
+     String partnar2 = "advertiser_200.json";
     private Map<String, List<Price>>  priceMap=new HashMap<>();
 
-    public Map<String, List<Price>>  loadfiles()
-    {
+    public Map<String, List<Price>>  loadfiles() throws BusinessException {
         loadPricesFromJsonFile();
         dataLoadFromYamlFile();
         return priceMap;
     }
 
-    public void loadPricesFromJsonFile(){
+    public void loadPricesFromJsonFile() throws BusinessException {
         try {
             File file = new File(path+partnar2);
             ObjectMapper objectMapper = new ObjectMapper();
@@ -37,12 +37,12 @@ public class PriceLoader {
                 priceMap.put(accommodation.getId(),accommodation.getPrices());
             }
         } catch (IOException e) {
-            e.printStackTrace();
+            throw new BusinessException("Please try with valid data given");
         }
     }
 
 
-    public void dataLoadFromYamlFile() {
+    public void dataLoadFromYamlFile() throws BusinessException {
         try {
             ObjectMapper yamlMapper = new ObjectMapper(new YAMLFactory());
             Advertiser advertiser = yamlMapper.readValue(new File(path+partnar1), Advertiser.class);
@@ -50,7 +50,8 @@ public class PriceLoader {
                 priceMap.put(accommodation.getId(),accommodation.getPrices());
             }
         } catch (IOException e) {
-            e.printStackTrace();
+            throw new BusinessException("Please try with valid data given");
+
         }
     }
 }

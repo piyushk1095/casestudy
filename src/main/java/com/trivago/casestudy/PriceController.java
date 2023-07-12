@@ -1,5 +1,6 @@
 package com.trivago.casestudy;
 
+import com.trivago.casestudy.exception.BusinessException;
 import com.trivago.casestudy.service.PriceLoaderServiceImpl;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -16,7 +17,7 @@ public class PriceController {
   public PriceLoaderServiceImpl priceLoaderService;
 
   @GetMapping("/prices/{accommodationId}")
-  public List<?> getPrices(@PathVariable int accommodationId) {
+  public List<?> getPrices(@PathVariable int accommodationId) throws BusinessException {
     List<?> prices = priceLoaderService.loadPricesFromFile(String.valueOf(accommodationId));
     if (prices.isEmpty()) {
       return Collections.singletonList("No prices found for the accommodation Id.");
