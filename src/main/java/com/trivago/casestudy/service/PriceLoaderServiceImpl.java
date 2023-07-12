@@ -18,14 +18,11 @@ public class PriceLoaderServiceImpl implements PriceLoaderService {
     @Override
     public List<Price> loadPricesFromFile(String accommodationID) {
         Map<String, List<Price>> accommodations = priceLoaderService.loadfiles();
-        List<Price> priceList = new ArrayList<>();
-        if (accommodations.containsKey(accommodationID)) {
-            priceList = accommodations.entrySet()
+        List<Price> priceList = accommodations.entrySet()
                     .stream()
                     .filter(entry -> entry.getKey().equals(accommodationID))
                     .flatMap(entry -> entry.getValue().stream())
                     .collect(Collectors.toList());
-        }
         return priceList;
     }
 }
