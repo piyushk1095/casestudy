@@ -27,7 +27,6 @@ public class PriceLoaderTest {
     @Test
     public void testLoadfiles() throws Exception {
         Map<String, List<Price>> priceMap = priceLoader.loadfiles();
-        System.out.print(priceMap.size());
         Assertions.assertNotNull(priceMap);
         Assertions.assertFalse(priceMap.isEmpty());
     }
