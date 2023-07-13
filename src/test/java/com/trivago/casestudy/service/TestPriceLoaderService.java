@@ -1,22 +1,21 @@
-package com.trivago.casestudy;
+package com.trivago.casestudy.service;
 
 import com.trivago.casestudy.dto.Price;
 import com.trivago.casestudy.exception.BusinessException;
-import com.trivago.casestudy.service.PriceLoaderService;
-import com.trivago.casestudy.service.PriceLoaderServiceImpl;
 import com.trivago.casestudy.util.PriceLoader;
-import org.junit.Before;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.mockito.InjectMocks;
 import org.mockito.Mock;
 import org.mockito.MockitoAnnotations;
-import org.springframework.beans.factory.annotation.Autowired;
 
-import java.util.*;
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
 
 import static org.junit.Assert.assertEquals;
-import static org.mockito.Mockito.*;
+import static org.mockito.Mockito.when;
 
 public class TestPriceLoaderService {
     @Mock
