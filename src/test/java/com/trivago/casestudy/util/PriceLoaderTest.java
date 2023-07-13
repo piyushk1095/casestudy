@@ -2,7 +2,6 @@ package com.trivago.casestudy.util;
 
 import com.trivago.casestudy.dto.Price;
 import com.trivago.casestudy.exception.BusinessException;
-import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
 import org.junit.jupiter.api.Assertions;
@@ -10,12 +9,8 @@ import org.mockito.InjectMocks;
 import org.mockito.Mock;
 import org.mockito.MockitoAnnotations;
 
-import java.io.IOException;
-import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
-
-import static org.mockito.Mockito.*;
 
 public class PriceLoaderTest {
     @Mock

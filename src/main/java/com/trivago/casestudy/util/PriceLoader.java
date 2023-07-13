@@ -6,6 +6,7 @@ import com.trivago.casestudy.dto.Accommodation;
 import com.trivago.casestudy.dto.Advertiser;
 import com.trivago.casestudy.dto.Price;
 import com.trivago.casestudy.exception.BusinessException;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Component;
 
 import java.io.File;
@@ -16,10 +17,13 @@ import java.util.Map;
 
 @Component
 public class PriceLoader {
+    @Value("${file.path}")
+    String path;
+    @Value("${file.partnar1}")
+    String partnar1;
+    @Value("${file.partnar2}")
+    String partnar2;
 
-     String path = "src/main/resources/static/prices/";
-     String partnar1 = "advertiser_100.yaml";
-     String partnar2 = "advertiser_200.json";
     private Map<String, List<Price>>  priceMap=new HashMap<>();
 
     public Map<String, List<Price>>  loadfiles() throws BusinessException {
