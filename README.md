@@ -40,8 +40,8 @@
             3. Caching: If the data returned by the partner service is relatively static or doesn't change frequently, you can consider implementing a caching mechanism. By caching the responses, you can serve subsequent requests from the cache instead of making repeated requests to the slow partner service. Spring provides caching support through the @Cacheable annotation and caching libraries like Ehcache or Redis.
 
         • How could your solution scale for multiple thousand requests per second?
-            1. Load Balancing: Implement a load balancer to distribute incoming requests across multiple instances of your Spring Boot application. This allows you to horizontally scale your application by adding more instances to handle the increased load. Popular load balancing solutions include Nginx, HAProxy, or cloud-based load balancers offered by cloud providers like AWS Elastic Load Balancer or Azure Load Balancer.
-            2. Connection Pooling: Configure connection pooling for your REST client to efficiently manage and reuse connections to the partner service. This helps reduce the overhead of establishing new connections for each request and improves overall performance. Libraries like Apache HttpClient or OkHttp provide connection pooling capabilities that can be integrated into your Spring Boot application.
+            1. Load Balancing: Implement a load balancer to distribute incoming requests across multiple instances of your Spring Boot application.
+            2. Connection Pooling: Configure connection pooling for your REST client to efficiently manage and reuse connections to the partner service. This helps reduce the overhead of establishing new connections for each request and improves overall performance.
             3. Auto-Scaling: Consider implementing auto-scaling capabilities that automatically adjust the number of instances based on predefined metrics, such as CPU utilization or request queue length. This allows your application to dynamically scale up or down based on the current demand, ensuring efficient resource utilization.
 
 

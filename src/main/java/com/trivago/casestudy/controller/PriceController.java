@@ -1,4 +1,4 @@
-package com.trivago.casestudy;
+package com.trivago.casestudy.controller;
 
 import com.trivago.casestudy.exception.BusinessException;
 import com.trivago.casestudy.service.PriceLoaderServiceImpl;

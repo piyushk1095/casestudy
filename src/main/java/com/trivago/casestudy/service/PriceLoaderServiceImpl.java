@@ -17,12 +17,11 @@ public class PriceLoaderServiceImpl implements PriceLoaderService {
 
     @Override
     public List<Price> loadPricesFromFile(String accommodationID) throws BusinessException {
-        Map<String, List<Price>> accommodations = priceLoader.loadfiles();
-        List<Price> priceList = accommodations.entrySet()
-                    .stream()
-                    .filter(entry -> entry.getKey().equals(accommodationID))
-                    .flatMap(entry -> entry.getValue().stream())
-                    .collect(Collectors.toList());
-        return priceList;
+        Map<String, List<Price>> accommodationsIdVsPriceMapping = priceLoader.loadfiles();
+        return accommodationsIdVsPriceMapping.entrySet()
+                .stream()
+                .filter(entry -> entry.getKey().equals(accommodationID))
+                .flatMap(entry -> entry.getValue().stream())
+                .collect(Collectors.toList());
     }
 }
